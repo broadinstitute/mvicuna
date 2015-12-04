@@ -91,7 +91,7 @@ public:
 		for (int i = 1; i < argnum; i += 2) {
 			std::string option = argv[i];
 			if (option.compare("-h") == 0 ||	option.compare("--h") == 0) {
-				printUsage (argv[0]);
+				printHelp (argv[0], 0);
 			} else if (option.compare("-ipfq") == 0) {
 				if (argc < i + 2) printUsage (argv[0]);
 				std::string tmp = argv[i+1];
@@ -282,7 +282,7 @@ private:
 		fe_k = 14;
 	}
 
-	void printUsage(char* exe) {
+	void printHelp(char* exe, int ret_code){
 		std::cout << "\n--------------------------------------------------------\n";
 		std::cout << "Parameters\n";
 		std::cout << "-ipfq: comma separated input paired fastq files; the ith and (i+1)th files form a pair (i is an odd number)\n";
@@ -331,7 +331,11 @@ private:
 
 		std::cout << "----------------------------------------------------------\n";
 
-		exit(1);
+		exit(ret_code);
+	}
+
+	void printUsage(char* exe) {
+		printHelp(exe, 1);		
 	}
 
 	void print_file_list (const std::string& flag, const strvec_t& flist) {
