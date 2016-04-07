@@ -22,7 +22,9 @@
 #include <cmath>
 #include <algorithm>
 #include <stdint.h>
+#ifdef _OPENMP
 #include <omp.h>
+#endif
 #include <iomanip>
 #include <tuple>
 #include <stdlib.h> // rand

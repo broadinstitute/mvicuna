@@ -9,8 +9,8 @@
 // 				 This software and its documentation are copyright (2013)
 //				 by the Broad Institute. All rights are reserved.
 //
-// 				 This software is supplied without any warranty or 
-//				 guaranteed support whatsoever. The Broad Institute cannot 
+// 				 This software is supplied without any warranty or
+//				 guaranteed support whatsoever. The Broad Institute cannot
 //				 be responsible for its use,	misuse, or functionality.
 // Description :
 //========================================================================
@@ -128,9 +128,11 @@ int apply_merging (std::ofstream& fhs, std::ofstream& fhfq,
 
 	std::vector<strpair_t> list_merged_fragments (num/2);
 
+  #ifdef _OPENMP
 	if (debug){ // debug case for merging
 		omp_set_num_threads(1);
 	}
+  #endif
 
 	#pragma omp parallel for
 	for (int i = num/2; i < num; ++ i) {
@@ -244,4 +246,3 @@ int apply_merging (std::ofstream& fhs, std::ofstream& fhfq,
 	// suffix_prefix_gap_free_aln ();
 
 } // apply_merging
-
