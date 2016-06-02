@@ -105,7 +105,9 @@ int main (int argc, char** argv){
 
 	strset_t intermediate_files;
 
+  #ifdef _OPENMP
  	omp_set_num_threads(myPara.pthreads);
+  #endif
 
  	xny::low_complexity lc (myPara.lc_n, myPara.lc_mono, myPara.lc_di);
 
@@ -305,9 +307,3 @@ int main (int argc, char** argv){
 	}
 	return (EXIT_SUCCESS);
 }
-
-
-
-
-
-
